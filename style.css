@@ -1,0 +1,34 @@
+body {
+    width           : 350px;
+}
+
+#input-lists{}
+
+#input-lists ul{
+    float           : left;
+    width           : 50%;
+    padding         : 0;
+    line-height     : 150%;
+    list-style-type : none;
+    font-size       : .9em;
+}
+
+#input-lists li{
+    padding         : 10px;
+    height          : 70px;
+}
+
+#input-lists li:nth-child(even){
+    background-color: #F0F0F0;
+}
+
+#input-lists p{
+    font-size       : .7em;
+    color           : #8F8F8F;
+    margin          : 0 10px 0px 16px;
+    line-height     : 140%;
+}
+
+.hidden {
+    display         : none;
+}

@@ -18,10 +18,10 @@ $(function(){
                         '<input type="checkbox" name="' + key + '" ' + defaultVal + ' /> ' +
                         labelText +
                     '</label>' +
-                    '<p class="help ' + helpKlass + '>' + helpText + '</p>'
+                    '<p class="help ' + helpKlass + '">' + helpText + '</p>'
                 '</li>';
 
-            $($('#input-lists')[binaryIterator]).append(template);
+            $($('#input-lists').find('ul')[binaryIterator]).append(template);
             binaryIterator = (binaryIterator == 0) ? 1 : 0
         }
     })();
