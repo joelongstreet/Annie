@@ -1,8 +1,36 @@
-body {
+body{
     width           : 350px;
 }
 
-#input-lists{}
+h1{
+    font-size       : 1.1em;
+    margin          : 10px 10px 0;
+    line-height:    : 150%;
+}
+
+.button{
+    float           : right;
+    margin-right    : 10px;
+    padding         : 7px;
+    border-radius   : 4px;
+    color           : white;
+    text-decoration : none;
+    background-color: #5bc0de;
+    border          : 1px solid #46b8da;
+    font-size       : .9em;
+}
+.button:hover{
+    background-color: #39b3d7;
+    border          : 1px solid #269abc;
+}
+#button-head{
+    margin-top      : -7px;
+}
+
+#input-lists{
+    overflow:       : hidden;
+    margin-top      : 25px;
+}
 
 #input-lists ul{
     float           : left;
