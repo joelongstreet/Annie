@@ -1,0 +1,95 @@
+var urlPrefix = 'http://passport.vml.com/rest/search/user_index/ui.json?';
+
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
+    if (tab.url.indexOf('passport.vml.com') > -1) {
+        chrome.pageAction.show(tabId);
+    }
+});
+
+chrome.pageAction.onClicked.addListener(function(tab){
+    var settings = ['name', 'mail', 'field_first_name'];
+    if(tab.url.indexOf('/users?') != -1){
+        var query       = tab.url.split('?')[1];
+        var fetchUrl    = urlPrefix + query;
+
+        $.ajax({
+            url     : fetchUrl,
+            success : function(data){
+                parseUserData(data, settings);
+            }, error : function(){
+                alert('error fetching data');
+            }
+        });
+    }
+});
+
+
+// This will do it's best job of flattening deep objects 
+// for this particular kind of response.
+var flatten = function(data){
+    if(!data) return '';
+    if(typeof(data) == 'string') return data
+    if(typeof(data == 'object')){
+        // If we're working with an array
+        if(data.length){
+            var stringedArray = '';
+            for(var i=0; i<data.length; i++){
+                stringedArray += data[i].label
+            }
+            return stringedArray
+        } 
+        // If it's an object
+        else{
+            if(data.label) return data.label
+            if(data.urls) return data.urls['default']
+            var keys = Object.keys(data);
+            return data[keys[0]]
+        }
+    }
+}
+
+
+var parseUserData = function(data, settings){
+    var users = [];
+    for(var i=0; i<data.results.length; i++){
+        // If no settings are selected, just use the whole user object
+        var user = {};
+        for(var key in data.results[i]){
+            if(settings.indexOf(key) != -1){
+                user[key] = flatten(data.results[i][key]);
+            }
+        }
+        users.push(user);
+    }
+
+    writeFile(users, settings);
+};
+
+
+var writeFile = function(arrayOfFlatObjects, settings){
+    var headers     = '';
+    var rows        = '';
+
+    for(var i = 0; i<settings.length; i++){
+        headers += settings[i];
+        if(i != settings.length - 1) headers += ', '
+        else headers += '\n'
+    }
+
+    for(var i=0; i<arrayOfFlatObjects.length; i++){
+        for(var j = 0; j<settings.length; j++){
+            rows += arrayOfFlatObjects[i][settings[j]];
+            if(j != settings.length - 1) rows += ', '
+        }
+        rows += '\n'
+    }
+
+    var csvBody = headers + rows;
+    promptDownload(csvBody);
+};
+
+
+var promptDownload = function(csvContent){
+    var uriContent = 'data:application/octet-stream,' + encodeURIComponent(csvContent);
+    window.open(uriContent, 'userData.csv');
+};

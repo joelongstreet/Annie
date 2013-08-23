@@ -1,0 +1,25 @@
+{
+    "manifest_version"  : 2,
+
+    "name"              : "Annie",
+    "description"       : "Format all passport user data in a .csv",
+    "version"           : "0.0.1",
+
+    "page_action"       : {
+        "default_icon"      : {
+            "19"            : "icon.png",
+            "38"            : "icon.png"
+        },
+        //"default_popup"     : "index.html",
+        "default_title"     : "Download Passport User Data"
+    },
+
+    "background"        : {
+        "scripts"           : [
+            "jquery-1.10.2.min.js",
+            "initializer.js"
+        ]
+    },
+
+    "permissions" : ["tabs", "http://passport.vml.com/*"]
+}
