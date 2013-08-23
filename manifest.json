@@ -10,7 +10,7 @@
             "19"            : "icon.png",
             "38"            : "icon.png"
         },
-        //"default_popup"     : "index.html",
+        "default_popup"     : "index.html",
         "default_title"     : "Download Passport User Data"
     },
 
