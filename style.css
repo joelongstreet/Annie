@@ -47,6 +47,18 @@ h1{
     margin-top      : -7px;
 }
 
+.check-all{
+    font-size       : .75em;
+    margin          : 10px 0 0 10px;
+}
+.check-all a{
+    color           : #0295cd;
+    margin-right    : 15px;
+}
+.check-all a:active{
+    color           : red;
+}
+
 #input-lists{
     overflow:       : hidden;
     margin-top      : 25px;
@@ -54,6 +66,7 @@ h1{
 
 #input-lists ul{
     float           : left;
+    margin-top      : 0px;
     width           : 50%;
     padding         : 0;
     line-height     : 150%;

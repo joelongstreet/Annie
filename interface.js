@@ -66,6 +66,16 @@ $(function(){
     })();
 
 
+    // Select and deselect all inputs checkboxes
+    $('.check-all').find('a').click(function(){
+        var val = $(this).hasClass('select-all');
+        $('input[type="checkbox"]').each(function(){
+            $(this).prop('checked', val);
+            localStorage.setItem($(this).attr('name'), val);
+        })
+    });
+
+
     // Close the extension
     $('.close').click(function(){
         window.close();
