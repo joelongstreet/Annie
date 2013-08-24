@@ -1,4 +1,4 @@
-var baseURL     = 'http://passport.vml.com/rest/search/user_index/ui.json?';
+var baseURL     = 'http://passport.vml.com/rest/search/user_index/ui.json?limit=5000&';
 var fetchURL    = '';
 var dateProps   = ['access', 'created', 'login', 'field_birthday', 'field_anniversary', 'field_updated'];
 
