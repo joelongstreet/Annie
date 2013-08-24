@@ -1,6 +1,6 @@
-var baseURL  = 'http://passport.vml.com/rest/search/user_index/ui.json?';
-var fetchURL = '';
-
+var baseURL     = 'http://passport.vml.com/rest/search/user_index/ui.json?';
+var fetchURL    = '';
+var dateProps   = ['access', 'created', 'login', 'field_birthday', 'field_anniversary', 'field_updated'];
 
 // Show the icon if the user is on a passport page
 // Set fetchURL when the URL changes
@@ -64,10 +64,21 @@ var parseUserData = function(data, settings){
                 user[key] = flatten(data.results[i][key]);
             }
         }
-        users.push(user);
+        users.push(fixDates(user));
     }
 
     writeFile(users, settings);
+};
+
+
+var fixDates = function(flatObject){
+    for(var i=0; i<dateProps.length; i++){
+        if(flatObject[dateProps[i]]){
+            flatObject[dateProps[i]] = moment(flatObject[dateProps[i]]*1000).format('MM/DD/YY');
+        }
+    }
+
+    return flatObject;
 };
 
 
