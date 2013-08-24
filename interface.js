@@ -27,13 +27,28 @@ $(function(){
     })();
 
 
-    // Listen for change functions, save to local storage,
-    // and build the search array
+    // Listen for change functions, save to local storage
     $('input:checkbox').change(function(){
         var inputName = $(this).attr('name');
         if($(this).is(':checked')){
             localStorage.setItem(inputName, true);
         } else localStorage.setItem(inputName, false);
+    });
+
+
+    // Collect filter types and call the rest fetcher
+    $('.button').click(function(){
+        $('.interface').fadeOut(function(){
+            $('.loading').fadeIn();
+        });
+
+        var selectedFields = [];
+        $('input:checkbox').each(function(){
+            if($(this).is(':checked')){
+                var inputName = $(this).attr('name');
+                selectedFields.push(inputName);
+            }
+        });
     });
 
 
