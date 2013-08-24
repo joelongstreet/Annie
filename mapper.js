@@ -1,44 +1,55 @@
 var mapper = {
     'field_first_name' : {
-        label   : 'First Name'
+        label   : 'First Name',
+        help    : 'A user\'s first name'
     },
     'field_last_name' : {
-        label   : 'Last Name'
+        label   : 'Last Name',
+        help    : 'A user\'s last name'
     },
     'mail' : {
-        label   : 'E-mail Address'
+        label   : 'E-mail Address',
+        help    : 'A user\'s work e-mail address'
     },
     'field_start_date' : {
-        label   : 'Start Date'
+        label   : 'Start Date',
+        help    : 'Date the user started working at VML (not necessarily as a full time employee)'
+    },
+    'field_anniversary' : {
+        label   : 'Anniversary',
+        help    : 'Date the user started as an employee with VML'
     },
     'field_department' : {
-        label   : 'Department'
+        label   : 'Department',
+        help    : 'Technology is the best'
     },
     'field_job_title' : {
-        label   : 'Job Title'
+        label   : 'Job Title',
+        help    : 'A user\'s official job title'
     },
     'field_location' : {
         label   : 'Location',
         help    : 'The employees primary office location'
     },
     'field_birthday' : {
-        label   : 'Birthdate'
-    },
-    'field_anniversary' : {
-        label   : 'Anniversary',
-        help    : 'Date the user started as an employee with VML'
+        label   : 'Birthdate',
+        help    : 'The date the user was born'
     },
     'field_work_phone' : {
-        label   : 'Work Phone #'
+        label   : 'Work Phone #',
+        help    : 'Work Phone #'
     },
     'field_mobile_phone' : {
-        label   : 'Mobile Phone #'
+        label   : 'Mobile Phone #',
+        help    : 'Mobile Phone #'
     },
     'field_alternate_phone' : {
-        label   : 'Alternate Phone #'
+        label   : 'Alternate Phone #',
+        help    : 'Alternate Phone #'
     },
     'field_fax' : {
-        label   : 'Fax #'
+        label   : 'Fax #',
+        help    : 'It\'s hard to believe people still fax stuff today'
     },
     'field_home_street' : {
         label   : 'Street Address',
@@ -57,7 +68,8 @@ var mapper = {
         help    : 'A user\'s home zip code'
     },
     'field_bio' : {
-        label   : 'Bio'
+        label   : 'Bio',
+        help    : 'A user generated biography'
     },
     'field_bio_official' : {
         label   : 'Official Bio',
@@ -68,16 +80,20 @@ var mapper = {
         help    : 'A url pointing to a Microsoft Word document containing the user\'s official VML bio'
     },
     'field_im_handle' : {
-        label   : 'Instant Messenger Handle'
+        label   : 'Instant Messenger Handle',
+        help    : 'AOL, Google Talk, or Windows Messenger handle'
     },
     'field_personal_email_address' : {
-        label   : 'Personal E-mail Address'
+        label   : 'Personal E-mail Address',
+        help    : 'A user\'s personal e-mail address'
     },
     'field_twitter_username' : {
-        label   : 'Twitter Username'
+        label   : 'Twitter Username',
+        help    : '@joelongstreet made this plugin'
     },
     'field_spouse' : {
-        label   : 'Spouse/Partner'
+        label   : 'Spouse/Partner',
+        help    : 'A users signficiant other'
     },
     'field_user_photo' : {
         label   : 'Photo URL',
@@ -108,7 +124,8 @@ var mapper = {
         help    : 'Date the user\'s profile was last updated'
     },
     'field_preferred_name' : {
-        label   : 'Preferred Name'
+        label   : 'Preferred Name',
+        help    : 'The user\'s preferred first name' 
     },
     'display_name' : {
         label   : 'Display Name',
@@ -135,7 +152,8 @@ var mapper = {
         help    : 'Should notifications be sent by e-mail?'
     },
     'timezone' : {
-        label   : 'Timezone'
+        label   : 'Timezone',
+        help    : 'A string version of the timezone (eg. America/Kansas City)'
     },
     'timezone_offset' : {
         label   : 'Timezone Offset',
