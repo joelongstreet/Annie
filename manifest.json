@@ -18,7 +18,7 @@
         "scripts"           : [
             "vendor/jquery-1.10.2.min.js",
             "vendor/moment.js",
-            "initializer.js"
+            "background.js"
         ]
     },
 
