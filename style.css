@@ -53,7 +53,7 @@ h1{
 #input-lists p{
     font-size       : .7em;
     color           : #8F8F8F;
-    margin          : 0 10px 0px 16px;
+    margin          : 0 10px 0px 0px;
     line-height     : 140%;
 }
 

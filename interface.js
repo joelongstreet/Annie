@@ -14,7 +14,7 @@ $(function(){
 
             var template    = '' +
                 '<li>' +
-                    '<label for="' + key + '">' +
+                    '<label>' +
                         '<input type="checkbox" name="' + key + '" ' + defaultVal + ' /> ' +
                         labelText +
                     '</label>' +
