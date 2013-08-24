@@ -1,26 +1,31 @@
-var urlPrefix = 'http://passport.vml.com/rest/search/user_index/ui.json?';
+var baseURL  = 'http://passport.vml.com/rest/search/user_index/ui.json?';
+var fetchURL = '';
 
+
+// Show the icon if the user is on a passport page
+// Set fetchURL when the URL changes
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
     if (tab.url.indexOf('passport.vml.com') > -1) {
         chrome.pageAction.show(tabId);
+
+        if(tab.url.indexOf('/users?') != -1){
+            fetchURL = baseURL + tab.url.split('?')[1];
+        }
     }
 });
 
-chrome.pageAction.onClicked.addListener(function(tab){
-    var settings = ['name', 'mail', 'field_first_name'];
-    if(tab.url.indexOf('/users?') != -1){
-        var query       = tab.url.split('?')[1];
-        var fetchUrl    = urlPrefix + query;
 
-        $.ajax({
-            url     : fetchUrl,
-            success : function(data){
-                parseUserData(data, settings);
-            }, error : function(){
-                alert('error fetching data');
-            }
-        });
-    }
+// Wait for a message from the background script
+chrome.extension.onMessage.addListener(function(message, sender, sendResponse){
+    $.ajax({
+        url     : fetchURL,
+        success : function(data, msg, jqXHR){
+            parseUserData(data, message.settings);
+            sendResponse({ success : true });
+        }, error : function(jqXHR, message, exception){
+            sendResponse({ error : message });
+        }
+    });
 });
 
 
@@ -46,7 +51,7 @@ var flatten = function(data){
             return data[keys[0]]
         }
     }
-}
+};
 
 
 var parseUserData = function(data, settings){

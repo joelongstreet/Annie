@@ -49,6 +49,8 @@ $(function(){
                 selectedFields.push(inputName);
             }
         });
+
+        sendMessageToBackground(selectedFields);
     });
 
 
@@ -63,3 +65,18 @@ $(function(){
         $('#greeting').text(greeting);
     })();
 });
+
+
+var sendMessageToBackground = function(selectedFields){
+    chrome.extension.sendMessage({ settings : selectedFields },function(response){
+        if(!response.error){
+            $('.loading').fadeOut(function(){
+                $('.interface').fadeIn();
+            });
+        } else{
+            $('.loading').fadeOut(function(){
+                $('.error-handler').fadeIn();
+            })
+        }
+    });
+}
