@@ -64,6 +64,13 @@ $(function(){
 
         $('#greeting').text(greeting);
     })();
+
+
+    // Close the extension
+    $('.close').click(function(){
+        console.log('hi');
+        window.close();
+    });
 });
 
 
