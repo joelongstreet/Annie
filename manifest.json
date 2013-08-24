@@ -7,8 +7,8 @@
 
     "page_action"       : {
         "default_icon"      : {
-            "19"            : "img/icon.png",
-            "38"            : "img/icon.png"
+            "19"            : "assets/img/icon.png",
+            "38"            : "assets/img/icon.png"
         },
         "default_popup"     : "index.html",
         "default_title"     : "Download Passport User Data"
@@ -18,7 +18,7 @@
         "scripts"           : [
             "vendor/jquery-1.10.2.min.js",
             "vendor/moment.js",
-            "background.js"
+            "assets/background.js"
         ]
     },
 
