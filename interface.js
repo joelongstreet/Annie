@@ -64,6 +64,12 @@ $(function(){
 
         $('#greeting').text(greeting);
     })();
+
+
+    // Close the extension
+    $('.close').click(function(){
+        window.close();
+    });
 });
 
 
