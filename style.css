@@ -2,32 +2,14 @@ body{
     width           : 350px;
     min-height      : 100px;
 }
-
-.close{
-    float           : right;
-    margin-top      : -14px;
-    padding         : 10px;
-    color           : #ccc;
-    text-decoration : none;
-}
-
 h1{
     font-size       : 1.1em;
     margin          : 10px 10px 0;
     line-height:    : 150%;
 }
 
-.loading{
-    display         : none;
-    background      : url('loader.gif') no-repeat center center;
-    width           : 100%;
-    height          : 200px;
-}
 
-.error-handler{
-    color           : #850000;
-}
-
+/*** Buttons ***/
 .button{
     float           : right;
     margin-right    : 10px;
@@ -47,6 +29,8 @@ h1{
     margin-top      : -7px;
 }
 
+
+/*** Select and Deslect All ***/
 .check-all{
     font-size       : .75em;
     margin          : 10px 0 0 10px;
@@ -59,11 +43,12 @@ h1{
     color           : red;
 }
 
+
+/*** Checkbox Containers ***/
 #input-lists{
     overflow:       : hidden;
     margin-top      : 25px;
 }
-
 #input-lists ul{
     float           : left;
     margin-top      : 0px;
@@ -73,16 +58,13 @@ h1{
     list-style-type : none;
     font-size       : .9em;
 }
-
 #input-lists li{
     padding         : 10px;
     height          : 70px;
 }
-
 #input-lists li:nth-child(even){
     background-color: #F0F0F0;
 }
-
 #input-lists p{
     font-size       : .7em;
     color           : #8F8F8F;
@@ -90,6 +72,29 @@ h1{
     line-height     : 140%;
 }
 
+
+/*** Loading Screen ***/
+.loading{
+    display         : none;
+    background      : url('loader.gif') no-repeat center center;
+    width           : 100%;
+    height          : 200px;
+}
+
+
+/*** Error Screen ***/
+.error-handler{
+    color           : #850000;
+}
+
+/*** Utils ***/
+.close{
+    float           : right;
+    margin-top      : -14px;
+    padding         : 10px;
+    color           : #ccc;
+    text-decoration : none;
+}
 .hidden {
     display         : none;
 }

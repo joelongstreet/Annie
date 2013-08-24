@@ -95,4 +95,4 @@ var sendMessageToBackground = function(selectedFields){
             })
         }
     });
-}
+};
