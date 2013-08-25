@@ -52,7 +52,9 @@ var flatten = function(data){
         if(data.length){
             var stringedArray = '';
             for(var i=0; i<data.length; i++){
-                stringedArray += data[i].label;
+                if(data[i].label) stringedArray += data[i].label;
+                else stringedArray += data[i];
+
                 if(i != data.length - 1) stringedArray += ', '
             }
             return stringedArray
