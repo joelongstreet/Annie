@@ -30,12 +30,15 @@ chrome.extension.onMessage.addListener(function(message, sender, sendResponse){
     $.ajax({
         url     : fetchURL,
         success : function(data, msg, jqXHR){
-            parseUserData(data, message.settings);
-            sendResponse({ success : true });
+            var users   = parseUserData(data, message.settings);
+            var csvBody = createCSV(users, message.settings); 
+            sendResponse({ csv : csvBody });
         }, error : function(jqXHR, message, exception){
             sendResponse({ error : message });
         }
     });
+
+    return true
 });
 
 
@@ -78,7 +81,7 @@ var parseUserData = function(data, settings){
         users.push(fixDates(user));
     }
 
-    writeFile(users, settings);
+    return users;
 };
 
 
@@ -93,7 +96,7 @@ var fixDates = function(flatObject){
 };
 
 
-var writeFile = function(arrayOfFlatObjects, settings){
+var createCSV = function(arrayOfFlatObjects, settings){
     var headers     = '';
     var rows        = '';
 
@@ -112,11 +115,5 @@ var writeFile = function(arrayOfFlatObjects, settings){
     }
 
     var csvBody = headers + rows;
-    promptDownload(csvBody);
-};
-
-
-var promptDownload = function(csvContent){
-    var uriContent = 'data:application/octet-stream,' + encodeURIComponent(csvContent);
-    window.open(uriContent, 'userData.csv');
+    return csvBody;
 };

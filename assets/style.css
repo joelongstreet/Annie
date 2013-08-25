@@ -73,6 +73,16 @@ h1{
 }
 
 
+/*** Download Screen ***/
+.download{
+    display         : none;
+}
+#downloadCSV{
+    float           : none;
+    display         : inline-block;
+    margin          : 10px;
+}
+
 /*** Loading Screen ***/
 .loading{
     display         : none;

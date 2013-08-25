@@ -37,7 +37,7 @@ $(function(){
 
 
     // Collect filter types and call the rest fetcher
-    $('.button').click(function(){
+    $('.build-csv').click(function(){
         $('.interface').fadeOut(function(){
             $('.loading').fadeIn();
         });
@@ -87,7 +87,10 @@ var sendMessageToBackground = function(selectedFields){
     chrome.extension.sendMessage({ settings : selectedFields },function(response){
         if(!response.error){
             $('.loading').fadeOut(function(){
-                $('.interface').fadeIn();
+                var encoded     = encodeURIComponent(response.csv);
+                var fileContent = 'data:text/csv;charset=utf-8,' + encoded;
+                $('.download').fadeIn();
+                $('#downloadCSV').attr('href', fileContent).attr('download', 'user-data.csv');
             });
         } else{
             $('.loading').fadeOut(function(){
