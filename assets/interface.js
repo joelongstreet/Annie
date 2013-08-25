@@ -42,15 +42,16 @@ $(function(){
             $('.loading').fadeIn();
         });
 
-        var selectedFields = [];
+        var selectedFieldNames  = [];
+        var selectedFieldTexts  = [];
         $('input:checkbox').each(function(){
             if($(this).is(':checked')){
-                var inputName = $(this).attr('name');
-                selectedFields.push(inputName);
+                selectedFieldNames.push($(this).attr('name'));
+                selectedFieldTexts.push($(this).parent().text().replace(' ', ''));
             }
         });
 
-        sendMessageToBackground(selectedFields);
+        sendMessageToBackground(selectedFieldNames, selectedFieldTexts);
     });
 
 
@@ -91,8 +92,8 @@ $(function(){
 });
 
 
-var sendMessageToBackground = function(selectedFields){
-    chrome.extension.sendMessage({ settings : selectedFields },function(response){
+var sendMessageToBackground = function(fieldNames, fieldTexts){
+    chrome.extension.sendMessage({ fieldNames : fieldNames, fieldTexts : fieldTexts },function(response){
         if(!response.error){
             $('.loading').fadeOut(function(){
                 var encoded     = encodeURIComponent(response.csv);

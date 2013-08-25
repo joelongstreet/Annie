@@ -30,8 +30,8 @@ chrome.extension.onMessage.addListener(function(message, sender, sendResponse){
     $.ajax({
         url     : fetchURL,
         success : function(data, msg, jqXHR){
-            var users   = parseUserData(data, message.settings);
-            var csvBody = createCSV(users, message.settings); 
+            var users   = parseUserData(data, message.fieldNames);
+            var csvBody = createCSV(users, message.fieldNames, message.fieldTexts);
             sendResponse({ csv : csvBody });
         }, error : function(jqXHR, message, exception){
             sendResponse({ error : message });
@@ -99,20 +99,20 @@ var fixDates = function(flatObject){
 };
 
 
-var createCSV = function(arrayOfFlatObjects, settings){
+var createCSV = function(arrayOfFlatObjects, fieldNames, fieldTexts){
     var headers     = '';
     var rows        = '';
 
-    for(var i = 0; i<settings.length; i++){
-        headers += settings[i];
-        if(i != settings.length - 1) headers += ','
+    for(var i = 0; i<fieldTexts.length; i++){
+        headers += fieldTexts[i];
+        if(i != fieldTexts.length - 1) headers += ','
         else headers += '\n'
     }
 
     for(var i=0; i<arrayOfFlatObjects.length; i++){
-        for(var j = 0; j<settings.length; j++){
-            rows += '"' + arrayOfFlatObjects[i][settings[j]] + '"';
-            if(j != settings.length - 1) rows += ','
+        for(var j = 0; j<fieldNames.length; j++){
+            rows += '"' + arrayOfFlatObjects[i][fieldNames[j]] + '"';
+            if(j != fieldNames.length - 1) rows += ','
         }
         rows += '\n'
     }
