@@ -76,6 +76,14 @@ $(function(){
     });
 
 
+    // Starting over from the download screen
+    $('#startOver').click(function(){
+        $('.download').fadeOut(function(){
+            $('.interface').fadeIn();
+        });
+    });
+
+
     // Close the extension
     $('.close').click(function(){
         window.close();

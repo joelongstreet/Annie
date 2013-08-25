@@ -21,9 +21,17 @@ h1{
     border          : 1px solid #46b8da;
     font-size       : .9em;
 }
+.button.red{
+    background-color:#d9534f;
+    border          :1px solid #d43f3a;
+}
 .button:hover{
     background-color: #39b3d7;
     border          : 1px solid #269abc;
+}
+.button.red:hover{
+    background-color: #d2322d;
+    border          : 1px solid #ac2925;
 }
 #button-head{
     margin-top      : -7px;
@@ -77,10 +85,13 @@ h1{
 .download{
     display         : none;
 }
-#downloadCSV{
+#downloadCSV, #startOver{
     float           : none;
     display         : inline-block;
     margin          : 10px;
+}
+#startOver{
+    margin-left     : 0;
 }
 
 /*** Loading Screen ***/
