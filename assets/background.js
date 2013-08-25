@@ -1,4 +1,4 @@
-var baseURL     = 'http://passport.vml.com/rest/search/user_index/ui.json?limit=5000&';
+var baseURL     = 'http://passport.vml.com/rest/';
 var fetchURL    = '';
 var dateProps   = ['access', 'created', 'login', 'field_birthday', 'field_anniversary', 'field_updated'];
 
@@ -8,9 +8,14 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
     if (tab.url.indexOf('passport.vml.com') > -1) {
         chrome.pageAction.show(tabId);
 
+        var usersURL = baseURL + 'search/user_index/ui.json?limit=5000';
         if(tab.url.indexOf('/users?') != -1){
-            fetchURL = baseURL + tab.url.split('?')[1];
-        }
+            fetchURL = usersURL + '&' + tab.url.split('?')[1];
+        } else if(tab.url.indexOf('/user/') != -1){
+            var splits      = tab.url.split('/');
+            var username    = splits[splits.length - 1];
+            fetchURL        = baseURL + 'user/' + username + '/ui.json';
+        } else fetchURL = usersURL
     }
 });
 
@@ -55,13 +60,14 @@ var flatten = function(data){
 
 
 var parseUserData = function(data, settings){
-    var users = [];
-    for(var i=0; i<data.results.length; i++){
-        // If no settings are selected, just use the whole user object
+    var users   = [];
+    var results = data.results || [data];
+
+    for(var i=0; i<results.length; i++){
         var user = {};
-        for(var key in data.results[i]){
+        for(var key in results[i]){
             if(settings.indexOf(key) != -1){
-                user[key] = flatten(data.results[i][key]);
+                user[key] = flatten(results[i][key]);
             }
         }
         users.push(fixDates(user));
