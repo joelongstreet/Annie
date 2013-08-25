@@ -5,7 +5,12 @@ var dateProps   = ['access', 'created', 'login', 'field_birthday', 'field_annive
 // Show the icon if the user is on a passport page
 // Set fetchURL when the URL changes
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
-    if (tab.url.indexOf('passport.vml.com') > -1) {
+    var onPageTruthTest = 0;
+    if(tab.url.indexOf('passport.vml.com') != -1) onPageTruthTest++;
+    if(tab.url.indexOf('/user/') != -1) onPageTruthTest++;
+    if(tab.url.indexOf('/users') != -1) onPageTruthTest++;
+
+    if(onPageTruthTest > 1) {
         chrome.pageAction.show(tabId);
 
         var usersURL = baseURL + 'search/user_index/ui.json?limit=5000';
