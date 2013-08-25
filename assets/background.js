@@ -109,7 +109,7 @@ var createCSV = function(arrayOfFlatObjects, settings){
     for(var i=0; i<arrayOfFlatObjects.length; i++){
         for(var j = 0; j<settings.length; j++){
             rows += '"' + arrayOfFlatObjects[i][settings[j]] + '"';
-            if(j != settings.length - 1) rows += ', '
+            if(j != settings.length - 1) rows += ','
         }
         rows += '\n'
     }
