@@ -20,7 +20,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
             var splits      = tab.url.split('/');
             var username    = splits[splits.length - 1];
             fetchURL        = baseURL + 'user/' + username + '/ui.json';
-        } else fetchURL = usersURL
+        } else fetchURL = usersURL;
     }
 });
 
@@ -38,7 +38,7 @@ chrome.extension.onMessage.addListener(function(message, sender, sendResponse){
         }
     });
 
-    return true
+    return true;
 });
 
 
@@ -46,7 +46,7 @@ chrome.extension.onMessage.addListener(function(message, sender, sendResponse){
 // for this particular kind of response.
 var flatten = function(data){
     if(!data) return '';
-    if(typeof(data) == 'string') return data
+    if(typeof(data) == 'string') return data;
     if(typeof(data == 'object')){
         // If we're working with an array
         if(data.length){
@@ -55,16 +55,16 @@ var flatten = function(data){
                 if(data[i].label) stringedArray += data[i].label;
                 else stringedArray += data[i];
 
-                if(i != data.length - 1) stringedArray += ', '
+                if(i != data.length - 1) stringedArray += ', ';
             }
-            return stringedArray
-        } 
+            return stringedArray;
+        }
         // If it's an object
         else{
-            if(data.label) return data.label
-            if(data.urls) return data.urls['default']
+            if(data.label) return data.label;
+            if(data.urls) return data.urls['default'];
             var keys = Object.keys(data);
-            return data[keys[0]]
+            return data[keys[0]];
         }
     }
 };
@@ -105,16 +105,16 @@ var createCSV = function(arrayOfFlatObjects, fieldNames, fieldTexts){
 
     for(var i = 0; i<fieldTexts.length; i++){
         headers += fieldTexts[i];
-        if(i != fieldTexts.length - 1) headers += ','
-        else headers += '\n'
+        if(i != fieldTexts.length - 1) headers += ',';
+        else headers += '\n';
     }
 
     for(var i=0; i<arrayOfFlatObjects.length; i++){
         for(var j = 0; j<fieldNames.length; j++){
             rows += '"' + arrayOfFlatObjects[i][fieldNames[j]] + '"';
-            if(j != fieldNames.length - 1) rows += ','
+            if(j != fieldNames.length - 1) rows += ',';
         }
-        rows += '\n'
+        rows += '\n';
     }
 
     var csvBody = headers + rows;

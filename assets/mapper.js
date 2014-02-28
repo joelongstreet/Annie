@@ -53,7 +53,7 @@ var mapper = {
     },
     'field_home_street' : {
         label   : 'Street Address',
-        help    : 'A user\'s personal street address' 
+        help    : 'A user\'s personal street address'
     },
     'field_home_city' : {
         label   : 'City',
@@ -125,7 +125,7 @@ var mapper = {
     },
     'field_preferred_name' : {
         label   : 'Preferred Name',
-        help    : 'The user\'s preferred first name' 
+        help    : 'The user\'s preferred first name'
     },
     'display_name' : {
         label   : 'Display Name',
@@ -163,4 +163,4 @@ var mapper = {
         label   : 'Status',
         help    : '1 means the user is active, 0 means the user is blocked'
     },
-}
+};

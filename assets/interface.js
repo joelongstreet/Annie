@@ -10,7 +10,7 @@ $(function(){
             var labelText   = '' || mapper[key].label;
             var helpKlass   = helpText ? '' : 'hidden';
             var storedVal   = localStorage.getItem(key);
-            var defaultVal  = (storedVal == 'true') ? 'checked' : ''
+            var defaultVal  = (storedVal == 'true') ? 'checked' : '';
 
             var template    = '' +
                 '<li>' +
@@ -18,11 +18,11 @@ $(function(){
                         '<input type="checkbox" name="' + key + '" ' + defaultVal + ' /> ' +
                         labelText +
                     '</label>' +
-                    '<p class="help ' + helpKlass + '">' + helpText + '</p>'
+                    '<p class="help ' + helpKlass + '">' + helpText + '</p>' +
                 '</li>';
 
             $($('#input-lists').find('ul')[binaryIterator]).append(template);
-            binaryIterator = (binaryIterator == 0) ? 1 : 0
+            binaryIterator = (binaryIterator === 0) ? 1 : 0;
         }
     })();
 
@@ -59,9 +59,9 @@ $(function(){
     (function(){
         var hours   = new Date().getHours();
         var greeting = '';
-        if(hours < 11) greeting = 'Good Morning'
-        else if(hours < 16) greeting = 'Good Afternoon'
-        else greeting = 'Good Evening'
+        if(hours < 11) greeting = 'Good Morning';
+        else if(hours < 16) greeting = 'Good Afternoon';
+        else greeting = 'Good Evening';
 
         $('#greeting').text(greeting);
     })();
@@ -73,7 +73,7 @@ $(function(){
         $('input[type="checkbox"]').each(function(){
             $(this).prop('checked', val);
             localStorage.setItem($(this).attr('name'), val);
-        })
+        });
     });
 
 
@@ -104,7 +104,7 @@ var sendMessageToBackground = function(fieldNames, fieldTexts){
         } else{
             $('.loading').fadeOut(function(){
                 $('.error-handler').fadeIn();
-            })
+            });
         }
     });
 };
