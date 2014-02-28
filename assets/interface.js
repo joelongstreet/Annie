@@ -103,6 +103,7 @@ var sendMessageToBackground = function(fieldNames, fieldTexts){
             });
         } else{
             $('.loading').fadeOut(function(){
+                $('.error-handler').text(response.error);
                 $('.error-handler').fadeIn();
             });
         }

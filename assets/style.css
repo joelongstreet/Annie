@@ -106,6 +106,7 @@ h1{
 /*** Error Screen ***/
 .error-handler{
     color           : #850000;
+    text-align      : center;
 }
 
 /*** Utils ***/
