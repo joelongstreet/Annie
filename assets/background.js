@@ -15,11 +15,18 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 
         var usersURL = baseURL + 'search/user_index/ui.json?limit=5000';
         if(tab.url.indexOf('/users?') != -1){
+            // When on any user filtering screen
             fetchURL = usersURL + '&' + tab.url.split('?')[1];
         } else if(tab.url.indexOf('/user/') != -1){
+            // When on an individual profile page
             var splits      = tab.url.split('/');
             var username    = splits[splits.length - 1];
             fetchURL        = baseURL + 'user/' + username + '/ui.json';
+        } else if(tab.url.indexOf('/group/') != -1){
+            // When on the group members page
+            var splits      = tab.url.split('/');
+            var groupId     = splits[splits.length - 2];
+            fetchURL        = usersURL + '&f[0]=og_user_node:' + groupId;
         } else fetchURL = usersURL;
     }
 });
@@ -109,10 +116,10 @@ var createCSV = function(arrayOfFlatObjects, fieldNames, fieldTexts){
         else headers += '\n';
     }
 
-    for(var i=0; i<arrayOfFlatObjects.length; i++){
-        for(var j = 0; j<fieldNames.length; j++){
-            rows += '"' + arrayOfFlatObjects[i][fieldNames[j]] + '"';
-            if(j != fieldNames.length - 1) rows += ',';
+    for(var j=0; j<arrayOfFlatObjects.length; j++){
+        for(var k=0; k<fieldNames.length; k++){
+            rows += '"' + arrayOfFlatObjects[j][fieldNames[k]] + '"';
+            if(k != fieldNames.length - 1) rows += ',';
         }
         rows += '\n';
     }
