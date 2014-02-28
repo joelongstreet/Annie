@@ -1,4 +1,4 @@
-var baseURL     = 'http://passport.vml.com/rest/';
+var baseURL     = 'https://passport.vml.com/rest/';
 var fetchURL    = '';
 var dateProps   = ['access', 'created', 'login', 'field_birthday', 'field_anniversary', 'field_updated'];
 
