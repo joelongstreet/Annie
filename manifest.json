@@ -27,5 +27,5 @@
         ]
     },
 
-    "permissions" : ["tabs", "http://passport.vml.com/*"]
+    "permissions" : ["tabs", "https://passport.vml.com/*"]
 }
